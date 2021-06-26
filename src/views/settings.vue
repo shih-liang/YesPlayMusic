@@ -473,7 +473,11 @@
       <div class="footer">
         <p class="author"
           >MADE BY
-          <a href="https://github.com/shih-liang/YesPlayMusicOSD" target="_blank">Repo</a></p
+          <a
+            href="https://github.com/shih-liang/YesPlayMusicOSD/graphs/contributors"
+            target="_blank"
+            >Contributors</a
+          ></p
         >
         <p class="version">v{{ version }}</p>
       </div>
