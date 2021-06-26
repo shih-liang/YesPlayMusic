@@ -73,11 +73,11 @@ export default {
     login: '登入',
     loginWithEmail: '信箱登入',
     loginWithPhone: '手機號碼登入',
-    notice: `YesPlayMusic 承諾不會保存您的任何帳號資訊到雲端。<br />
+    notice: `YesPlayMusicOSD 承諾不會保存您的任何帳號資訊到雲端。<br />
         您的密碼會在本地進行 MD5 加密後再傳輸到網易雲 API。<br />
         YesPlayMusic 並非網易雲官方網站，輸入帳號資訊前請慎重考慮。 您也可以前往
-        <a href="https://github.com/qier222/YesPlayMusic"
-          >YesPlayMusic 的 GitHub 原始碼 Repo</a
+        <a href="https://github.com/shih-liang/YesPlayMusicOSD"
+          >YesPlayMusicOSD 的 GitHub 原始碼 Repo</a
         >
         自行編譯並使用自託管的網易雲 API。`,
     noticeElectron: `您的密碼會在本地進行 MD5 加密後再傳輸到網易雲 API。<br />

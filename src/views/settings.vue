@@ -473,7 +473,7 @@
       <div class="footer">
         <p class="author"
           >MADE BY
-          <a href="http://github.com/qier222" target="_blank">QIER222</a></p
+          <a href="https://github.com/shih-liang/YesPlayMusicOSD" target="_blank">Repo</a></p
         >
         <p class="version">v{{ version }}</p>
       </div>
