@@ -5,7 +5,7 @@ const { app, Menu } = require('electron');
 
 const isMac = process.platform === 'darwin';
 
-export function createMenu(win, store) {
+export function createMenu(win, store, lrc) {
   let shortcuts = store.get('settings.shortcuts');
   if (shortcuts === undefined) {
     shortcuts = defaultShortcuts;
@@ -188,6 +188,7 @@ export function createMenu(win, store) {
           accelerator: 'F12',
           click: () => {
             win.webContents.openDevTools();
+            lrc.openDevTools();
           },
         },
       ],
