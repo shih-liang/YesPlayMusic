@@ -6,7 +6,7 @@
   <h2 align="center" style="font-weight: 600">YesPlayMusic</h2>
 
   <p align="center">
-    高颜值的第三方网易云播放器
+    高颜值的第三方网易云播放器，支持桌面歌词！
     <br />
     <a href="https://github.com/shih-liang/YesPlayMusicOSD" target="blank"><strong>🌎 访问DEMO</strong></a>&nbsp;&nbsp;|&nbsp;&nbsp;
     <a href="#%EF%B8%8F-安装" target="blank"><strong>📦️ 下载安装包</strong></a>
