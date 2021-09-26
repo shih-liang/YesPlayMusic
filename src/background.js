@@ -26,6 +26,11 @@ const log = text => {
   console.log(`${clc.blueBright('[background.js]')} ${text}`);
 };
 
+const isWindows = process.platform === 'win32';
+const isMac = process.platform === 'darwin';
+const isLinux = process.platform === 'linux';
+const isDevelopment = process.env.NODE_ENV === 'development';
+
 class Background {
   constructor() {
     this.window = null;
@@ -39,7 +44,7 @@ class Background {
     });
     this.neteaseMusicAPI = null;
     this.expressApp = null;
-    this.willQuitApp = process.platform === 'darwin' ? false : true;
+    this.willQuitApp = isMac ? false : true;
 
     this.init();
   }
@@ -74,7 +79,7 @@ class Background {
     }
 
     // Exit cleanly on request from parent process in development mode.
-    if (process.platform === 'win32') {
+    if (isWindows) {
       process.on('message', data => {
         if (data === 'graceful-exit') {
           app.quit();
@@ -120,7 +125,7 @@ class Background {
       minWidth: 1080,
       minHeight: 720,
       titleBarStyle: 'hiddenInset',
-      frame: process.platform !== 'win32',
+      frame: !isWindows,
       title: 'YesPlayMusic',
       show: false,
       webPreferences: {
@@ -231,7 +236,7 @@ class Background {
   }
 
   checkForUpdates() {
-    if (process.env.NODE_ENV === 'development') return;
+    if (isDevelopment) return;
     log('checkForUpdates');
     autoUpdater.checkForUpdatesAndNotify();
 
@@ -285,20 +290,24 @@ class Background {
 
   handleWindowEvents() {
     this.window.once('ready-to-show', () => {
-      log('windows ready-to-show event');
+      log('window ready-to-show event');
       this.window.show();
     });
 
     this.window.on('close', e => {
-      log('windows close event');
-      if (this.willQuitApp) {
+      log('window close event');
+      let closeOpt = this.store.get('settings.closeAppOption');
+      if (this.willQuitApp && (closeOpt === 'exit' || closeOpt === 'ask')) {
         /* the user tried to quit the app */
         this.window = null;
         app.quit();
+      } else if (!this.willQuitApp && isMac) {
+        e.preventDefault();
+        this.window.hide();
       } else {
         /* the user only tried to close the window */
         e.preventDefault();
-        this.window.hide();
+        this.window.minimize();
       }
     });
 
@@ -312,8 +321,8 @@ class Background {
 
     this.window.on('minimize', () => {
       if (
-        ['win32', 'linux'].includes(process.platform) &&
-        this.store.get('settings.minimizeToTray')
+        !isMac &&
+        this.store.get('settings.closeAppOption') === 'minimizeToTray'
       ) {
         this.window.hide();
       }
@@ -352,7 +361,7 @@ class Background {
       log('app ready event');
 
       // for development
-      if (process.env.NODE_ENV === 'development') {
+      if (isDevelopment) {
         this.initDevtools();
       }
 
@@ -386,10 +395,7 @@ class Background {
       createMenu(this.window, this.store);
 
       // create tray
-      if (
-        ['win32', 'linux'].includes(process.platform) ||
-        process.env.NODE_ENV === 'development'
-      ) {
+      if (isWindows || isLinux || isDevelopment) {
         this.tray = createTray(this.window);
       }
 
@@ -400,7 +406,7 @@ class Background {
       this.window.setTouchBar(createTouchBar(this.window));
 
       // register global shortcuts
-      if (this.store.get('settings.enableGlobalShortcut')) {
+      if (this.store.get('settings.enableGlobalShortcut') !== false) {
         registerGlobalShortcut(this.window, this.store);
       }
     });
@@ -417,7 +423,7 @@ class Background {
     });
 
     app.on('window-all-closed', () => {
-      if (process.platform !== 'darwin') {
+      if (!isMac) {
         app.quit();
       }
     });

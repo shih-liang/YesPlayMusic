@@ -1,6 +1,11 @@
-name: Build / Release
+name: Release
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - v*
 
 jobs:
   release:
