@@ -166,7 +166,6 @@ export default {
       text: 'Close App...',
       ask: 'Ask',
       exit: 'Exit',
-      minimize: 'Minimize',
       minimizeToTray: 'Minimize to tray',
     },
   },
