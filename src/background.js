@@ -87,7 +87,7 @@ class Background {
     });
     this.neteaseMusicAPI = null;
     this.expressApp = null;
-    this.willQuitApp = isMac ? false : true;
+    this.willQuitApp = !isMac;
 
     this.init();
   }
@@ -482,6 +482,18 @@ class Background {
       // unregister all global shortcuts
       globalShortcut.unregisterAll();
     });
+
+    if (!isMac) {
+      app.on('second-instance', (e, cl, wd) => {
+        if (this.window) {
+          this.window.show();
+          if (this.window.isMinimized()) {
+            this.window.restore();
+          }
+          this.window.focus();
+        }
+      });
+    }
   }
 }
 
