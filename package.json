@@ -43,7 +43,7 @@
     "electron-devtools-installer": "^3.2",
     "electron-icon-builder": "^1.0.2",
     "electron-is-dev": "^1.2.0",
-    "electron-log": "^4.3.0",
+    "electron-log": "^4.4.3",
     "electron-store": "^6.0.1",
     "electron-updater": "^4.3.5",
     "express": "^4.17.1",
