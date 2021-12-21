@@ -87,7 +87,7 @@
     "eslint-plugin-vue": "^7.9.0",
     "husky": "^4.3.0",
     "sass": "^1.26.11",
-    "sass-loader": "^10.0.2",
+    "sass-loader": "^12.4.0",
     "vue-cli-plugin-electron-builder": "~2.0.0-rc.4",
     "vue-template-compiler": "^2.6.11"
   },
