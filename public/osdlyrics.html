@@ -74,8 +74,8 @@
             if (!ipcRenderer) {
                 return;
             }
-            offsetHeight = document.getElementById('line1').offsetHeight + 4;
-            if (offsetHeight == window.innerHeight) {
+            offsetHeight = document.getElementById('line1').offsetHeight;
+            if (offsetHeight < window.innerHeight) {
                 return;
             }
             ipcRenderer.send('resizeOSDLyrics', offsetHeight);
