@@ -4045,10 +4045,10 @@ debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.9:
   dependencies:
     ms "2.0.0"
 
-debug@4, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2:
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.2.tgz#f0a49c18ac8779e31d4a0c6029dfb76873c7428b"
-  integrity sha512-mOp8wKcvj7XxC78zLgw/ZA+6TSgkoE2C/ienthhRD298T7UNwAg9diBpLRxC0mOezLl4B0xV7M0cCO6P/O0Xhw==
+debug@4, debug@^4.0.1, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2, debug@^4.3.3:
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.3.tgz#04266e0b70a98d4462e6e288e38259213332b664"
+  integrity sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==
   dependencies:
     ms "2.1.2"
 
@@ -8020,13 +8020,14 @@ multicast-dns@^6.0.1:
     dns-packet "^1.3.1"
     thunky "^1.0.2"
 
-music-metadata@^7.11.4:
-  version "7.11.4"
-  resolved "https://registry.yarnpkg.com/music-metadata/-/music-metadata-7.11.4.tgz#31db326a50de552628297571a8e078de2fe16c02"
-  integrity sha512-pEaS/vRo0zCAWJ0y5zZ5ruM8CvPPJ/VXbevRMUVkZkWN8rZAQun04xx09/3/PV0qS3nlrzPUDCRK6jDrbGVtUg==
+music-metadata@^7.11.8:
+  version "7.11.8"
+  resolved "https://registry.yarnpkg.com/music-metadata/-/music-metadata-7.11.8.tgz#be67ff6d5e5499d2a31a7044079cb83c03544cc2"
+  integrity sha512-KaJzxDlYId05zN029WaKhJYcT5FB0QmTRSGDq5bRfPTBUw4Hl0VvJvaO5C5mm0ATWMREecMANV9YUatLMg+0Mg==
   dependencies:
+    "@tokenizer/token" "^0.3.0"
     content-type "^1.0.4"
-    debug "^4.3.2"
+    debug "^4.3.3"
     file-type "16.5.3"
     media-typer "^1.1.0"
     strtok3 "^6.2.4"
