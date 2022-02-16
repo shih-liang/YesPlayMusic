@@ -34,7 +34,7 @@
     "core-js": "^3.20.1",
     "crypto-js": "^4.1.1",
     "dayjs": "^1.10.7",
-    "dexie": "^3.2.0",
+    "dexie": "^3.2.1",
     "discord-rich-presence": "^0.0.8",
     "electron": "^16.0.5",
     "electron-builder": "^22.10.5",
