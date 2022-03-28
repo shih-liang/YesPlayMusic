@@ -50,7 +50,7 @@
     "extract-zip": "^2.0.1",
     "howler": "^2.2.3",
     "js-cookie": "^2.2.1",
-    "jsbi": "^4.1.0",
+    "jsbi": "^4.2.0",
     "lodash": "^4.17.20",
     "md5": "^2.3.0",
     "mpris-service": "^2.1.2",
