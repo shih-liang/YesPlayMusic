@@ -36,6 +36,7 @@
 - 🟥 支持 Last.fm Scrobble
 - ☁️ 支持音乐云盘
 - ⌨️ 自定义快捷键和全局快捷键
+- 🎧 支持Mpris
 - 🛠 更多特性开发中
 
 ## 📦️ 安装
@@ -81,7 +82,7 @@
 2. 克隆本仓库
 
 ```sh
-git clone https://github.com/shih-liang/YesPlayMusicOSD.git
+git clone --recursive https://github.com/shih-liang/YesPlayMusicOSD.git
 ```
 
 3. 安装依赖
@@ -107,6 +108,28 @@ yarn run build
 
 7. 将 `/dist` 目录下的文件上传到你的 Web 服务器
 
+## ⚙️ Docker 部署
+
+1. 构建 Docker Image
+
+```sh
+docker build -t yesplaymusic .
+```
+
+2. 启动 Docker Container
+
+```sh
+docker run -d --name YesPlayMusic -p 80:80 yesplaymusic
+```
+
+3. Docker Compose 启动
+
+```sh
+docker-compose up -d
+```
+
+YesPlayMusic 地址为 `http://localhost`
+
 ## 👷‍♂️ 打包客户端
 
 如果在 Release 页面没有找到适合你的设备的安装包的话，你可以根据下面的步骤来打包自己的客户端。
@@ -114,7 +137,7 @@ yarn run build
 1. 打包 Electron 需要用到 Node.js 和 Yarn。可前往 [Node.js 官网](https://nodejs.org/zh-cn/) 下载安装包。安装 Node.js
    后可在终端里执行 `npm install -g yarn` 来安装 Yarn。
 
-2. 使用 `git clone https://github.com/shih-liang/YesPlayMusicOSD.git` 克隆本仓库到本地。
+2. 使用 `git clone --recursive https://github.com/shih-liang/YesPlayMusicOSD.git` 克隆本仓库到本地。
 
 3. 使用 `yarn install` 安装项目依赖。
 
@@ -131,7 +154,7 @@ yarn run build
 
 ## :computer: 配置开发环境
 
-本项目由 [NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi) 提供 API，已经包含在本项目的`netease_api`目录。
+本项目由 [NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi) 提供 API。
 
 运行本项目
 
@@ -152,9 +175,6 @@ yarn electron:serve
 本地运行 NeteaseCloudMusicApi，或者将 API [部署至 Vercel](#%EF%B8%8F-部署至-vercel)
 
 ```shell
-# 安装依赖
-yarn netease_api:install
-
 # 运行 API （默认 3000 端口）
 yarn netease_api:run
 ```
