@@ -5035,14 +5035,14 @@ electron-builder@^22.2.0, electron-builder@^23.0.0:
     update-notifier "^5.1.0"
     yargs "^17.0.1"
 
-electron-context-menu@^2.3.0:
-  version "2.5.2"
-  resolved "https://registry.yarnpkg.com/electron-context-menu/-/electron-context-menu-2.5.2.tgz#7f2383f011d0d53f282300e0d80b44e2f64c16a7"
-  integrity sha512-1cEQR6fA9ktFsRBc+eXPwvrOgAPytUD7rUV4iBAA5zTrLAPKokJ23xeMjcK2fjrDPrlFRBxcLz0KP+GUhMrSCQ==
+electron-context-menu@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/electron-context-menu/-/electron-context-menu-3.1.2.tgz#0f550e47df39cb25c03e0f4bf840ce5c9fefcdd5"
+  integrity sha512-nNzu4w14n7mOR+4cLjRC9cEFqGUsAY76seOm0sw3f4OxEfX/d75m7HYekyp5b+0m7Ixy2KN/Mrljw1zLmpyV2w==
   dependencies:
     cli-truncate "^2.1.0"
-    electron-dl "^3.1.0"
-    electron-is-dev "^1.2.0"
+    electron-dl "^3.2.1"
+    electron-is-dev "^2.0.0"
 
 electron-debug@^3.1.0:
   version "3.2.0"
@@ -5062,7 +5062,7 @@ electron-devtools-installer@^3.2:
     tslib "^2.1.0"
     unzip-crx-3 "^0.2.0"
 
-electron-dl@^3.1.0:
+electron-dl@^3.2.1:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/electron-dl/-/electron-dl-3.3.0.tgz#4e422e276c627373ba61fcf3f92ffa088988db1a"
   integrity sha512-Zwaz/OMGPIfBLV2SQH4sTsdDOs/U4y5AOHfremMBXEpjIxX+SiTx845DZAvJJwgb5hfowyWOBLiJhd/emBNLLQ==
@@ -5089,6 +5089,11 @@ electron-is-dev@^1.1.0, electron-is-dev@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/electron-is-dev/-/electron-is-dev-1.2.0.tgz#2e5cea0a1b3ccf1c86f577cee77363ef55deb05e"
   integrity sha512-R1oD5gMBPS7PVU8gJwH6CtT0e6VSoD0+SzSnYpNm+dBkcijgA+K7VAMHDfnRq/lkKPZArpzplTW6jfiMYosdzw==
+
+electron-is-dev@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/electron-is-dev/-/electron-is-dev-2.0.0.tgz#833487a069b8dad21425c67a19847d9064ab19bd"
+  integrity sha512-3X99K852Yoqu9AcW50qz3ibYBWY79/pBhlMCab8ToEWS48R0T9tyxRiQhwylE7zQdXrMnx2JKqUJyMPmt5FBqA==
 
 electron-localshortcut@^3.1.0:
   version "3.2.1"
