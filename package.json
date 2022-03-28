@@ -25,7 +25,7 @@
   "dependencies": {
     "@unblockneteasemusic/server": "v0.27.0-rc.6",
     "NeteaseCloudMusicApi": "^4.5.2",
-    "axios": "^0.21.0",
+    "axios": "^0.26.1",
     "change-case": "^4.1.2",
     "cli-color": "^2.0.0",
     "color": "^3.1.3",
