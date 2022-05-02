@@ -86,9 +86,10 @@
             <option value="320000">
               {{ $t('settings.musicQuality.high') }} - 320Kbps
             </option>
-            <option value="999000">
+            <option value="flac">
               {{ $t('settings.musicQuality.lossless') }} - FLAC
             </option>
+            <option value="999000">Hi-Res</option>
           </select>
         </div>
       </div>
@@ -223,11 +224,11 @@
       </div>
 
       <section v-if="isElectron" class="unm-configuration">
-        <h3>UnblockNeteaseMusic 设定</h3>
+        <h3>UnblockNeteaseMusic</h3>
         <div class="item">
           <div class="left">
             <div class="title"
-              >启用
+              >{{ $t('settings.unm.enable') }}
               <a
                 href="https://github.com/UnblockNeteaseMusic/server"
                 target="blank"
@@ -247,16 +248,19 @@
             </div>
           </div>
         </div>
+
         <div class="item">
           <div class="left">
-            <div class="title"> 备选音源 </div>
+            <div class="title">
+              {{ $t('settings.unm.audioSource.title') }}
+            </div>
             <div class="description">
               音源的具体代号
               <a
-                href="https://github.com/UnblockNeteaseMusic/server#音源清单"
+                href="https://github.com/UnblockNeteaseMusic/server-rust/blob/main/README.md#支援的所有引擎"
                 target="_blank"
               >
-                可以点此到 UNM 的说明页面查询 </a
+                可以点此到 UNM 的说明页面查询。 </a
               ><br />
               多个音源请用 <code>,</code> 逗号分隔。<br />
               留空则使用 UNM 内置的默认值。
@@ -264,12 +268,125 @@
           </div>
           <div class="right">
             <input
-              id="unm-source"
               v-model="unmSource"
-              class="text-input"
+              class="text-input margin-right-0"
               placeholder="例 bilibili, kuwo"
             />
-            <label for="unm-source"></label>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="left">
+            <div class="title"> {{ $t('settings.unm.enableFlac.title') }} </div>
+            <div class="description">
+              {{ $t('settings.unm.enableFlac.desc') }}
+            </div>
+          </div>
+          <div class="right">
+            <div class="toggle">
+              <input
+                id="unm-enable-flac"
+                v-model="unmEnableFlac"
+                type="checkbox"
+              />
+              <label for="unm-enable-flac" />
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="left">
+            <div class="title"> {{ $t('settings.unm.searchMode.title') }} </div>
+          </div>
+          <div class="right">
+            <select v-model="unmSearchMode">
+              <option value="fast-first">
+                {{ $t('settings.unm.searchMode.fast') }}
+              </option>
+              <option value="order-first">
+                {{ $t('settings.unm.searchMode.order') }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="left">
+            <div class="title">{{ $t('settings.unm.cookie.joox') }}</div>
+            <div class="description">
+              <a
+                href="https://github.com/UnblockNeteaseMusic/server-rust/tree/main/engines#joox-cookie-設定說明"
+                target="_blank"
+                >{{ $t('settings.unm.cookie.desc1') }}
+              </a>
+              {{ $t('settings.unm.cookie.desc2') }}
+            </div>
+          </div>
+          <div class="right">
+            <input
+              v-model="unmJooxCookie"
+              class="text-input margin-right-0"
+              placeholder="wmid=..; session_key=.."
+            />
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="left">
+            <div class="title"> {{ $t('settings.unm.cookie.qq') }} </div>
+            <div class="description">
+              <a
+                href="https://github.com/UnblockNeteaseMusic/server-rust/tree/main/engines#qq-cookie-設定說明"
+                target="_blank"
+                >{{ $t('settings.unm.cookie.desc1') }}
+              </a>
+              {{ $t('settings.unm.cookie.desc2') }}
+            </div>
+          </div>
+          <div class="right">
+            <input
+              v-model="unmQQCookie"
+              class="text-input margin-right-0"
+              placeholder="uin=..; qm_keyst=..;"
+            />
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="left">
+            <div class="title"> {{ $t('settings.unm.ytdl') }} </div>
+            <div class="description">
+              <a
+                href="https://github.com/UnblockNeteaseMusic/server-rust/tree/main/engines#ytdlexe-設定說明"
+                target="_blank"
+                >{{ $t('settings.unm.cookie.desc1') }}
+              </a>
+              {{ $t('settings.unm.cookie.desc2') }}
+            </div>
+          </div>
+          <div class="right">
+            <input
+              v-model="unmYtDlExe"
+              class="text-input margin-right-0"
+              placeholder="ex. youtube-dl"
+            />
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="left">
+            <div class="title"> {{ $t('settings.unm.proxy.title') }} </div>
+            <div class="description">
+              {{ $t('settings.unm.proxy.desc1') }}<br />
+              {{ $t('settings.unm.proxy.desc2') }}
+            </div>
+          </div>
+          <div class="right">
+            <input
+              v-model="unmProxyUri"
+              class="text-input margin-right-0"
+              placeholder="ex. https://192.168.11.45"
+            />
           </div>
         </div>
       </section>
@@ -703,8 +820,7 @@ export default {
     },
     musicQuality: {
       get() {
-        if (this.settings.musicQuality === undefined) return 320000;
-        return this.settings.musicQuality;
+        return this.settings.musicQuality ?? 320000;
       },
       set(value) {
         if (value === this.settings.musicQuality) return;
@@ -948,7 +1064,73 @@ export default {
       set(value) {
         this.$store.commit('updateSettings', {
           key: 'unmSource',
-          value: value.length ? value : null,
+          value: value.length && value,
+        });
+      },
+    },
+    unmSearchMode: {
+      get() {
+        return this.settings.unmSearchMode || 'fast-first';
+      },
+      set(value) {
+        this.$store.commit('updateSettings', {
+          key: 'unmSearchMode',
+          value: value,
+        });
+      },
+    },
+    unmEnableFlac: {
+      get() {
+        return this.settings.unmEnableFlac || false;
+      },
+      set(value) {
+        this.$store.commit('updateSettings', {
+          key: 'unmEnableFlac',
+          value: value || false,
+        });
+      },
+    },
+    unmProxyUri: {
+      get() {
+        return this.settings.unmProxyUri || '';
+      },
+      set(value) {
+        this.$store.commit('updateSettings', {
+          key: 'unmProxyUri',
+          value: value.length && value,
+        });
+      },
+    },
+    unmJooxCookie: {
+      get() {
+        return this.settings.unmJooxCookie || '';
+      },
+      set(value) {
+        this.$store.commit('updateSettings', {
+          key: 'unmJooxCookie',
+          value: value.length && value,
+        });
+      },
+    },
+    unmQQCookie: {
+      get() {
+        return this.settings.unmQQCookie || '';
+      },
+      set(value) {
+        this.$store.commit('updateSettings', {
+          key: 'unmQQCookie',
+          value: value.length && value,
+        });
+      },
+    },
+    unmYtDlExe: {
+      get() {
+        return this.settings.unmYtDlExe || '';
+      },
+      set(value) {
+        this.$store.commit('updateSettings', {
+          key: 'unmYtDlExe',
+          value: value.length && value,
         });
       },
     },
@@ -1278,6 +1460,9 @@ button {
   }
 }
 
+input.text-input.margin-right-0 {
+  margin-right: 0;
+}
 input.text-input {
   background: var(--color-secondary-bg);
   border: none;
