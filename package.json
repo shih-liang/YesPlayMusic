@@ -44,7 +44,7 @@
     "electron-log": "^4.3.0",
     "electron-store": "^8.0.1",
     "electron-updater": "^5.0.1",
-    "express": "^4.17.1",
+    "express": "^4.18.1",
     "express-fileupload": "^1.2.0",
     "express-http-proxy": "^1.6.2",
     "extract-zip": "^2.0.1",
