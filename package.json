@@ -32,7 +32,7 @@
     "core-js": "^3.6.5",
     "crypto-js": "^4.0.0",
     "dayjs": "^1.8.36",
-    "dexie": "^3.0.3",
+    "dexie": "^3.2.2",
     "discord-rich-presence": "^0.0.8",
     "electron": "^13.6.7",
     "electron-builder": "^23.0.0",
