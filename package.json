@@ -25,7 +25,7 @@
   "dependencies": {
     "@unblockneteasemusic/rust-napi": "^0.3.0-pre.1",
     "NeteaseCloudMusicApi": "^4.5.2",
-    "axios": "^0.26.1",
+    "axios": "^0.27.2",
     "change-case": "^4.1.2",
     "cli-color": "^2.0.0",
     "color": "^4.2.3",
