@@ -65,7 +65,7 @@
     "svg-sprite-loader": "^6.0.11",
     "tunnel": "^0.0.6",
     "vscode-codicons": "^0.0.17",
-    "vue": "^2.6.11",
+    "vue": "^3.2.37",
     "vue-clipboard2": "^0.3.1",
     "vue-gtag": "1",
     "vue-i18n": "^8.22.0",
