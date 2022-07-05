@@ -76,7 +76,7 @@
   },
   "devDependencies": {
     "@types/node": "^17.0.0",
-    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-babel": "~5.0.7",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-pwa": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
