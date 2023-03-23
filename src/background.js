@@ -126,6 +126,11 @@ class Background {
         'HardwareMediaKeyHandling,MediaSessionService'
       );
     }
+
+    // display transparent window on linux
+    if (isLinux) {
+      app.commandLine.appendSwitch('use-gl', 'desktop');
+    }
   }
 
   async initDevtools() {
@@ -290,7 +295,7 @@ class Background {
       );
       if (!process.env.IS_TEST) this.osdlyrics.webContents.openDevTools();
     } else {
-      this.osdlyrics.loadURL('http://localhost:27232/osdlyrics.html');
+      this.osdlyrics.loadURL('http://localhost:41342/osdlyrics.html');
     }
   }
 
@@ -468,6 +473,9 @@ class Background {
         this.initDevtools();
       }
 
+      if (isLinux) {
+        await new Promise(r => setTimeout(r, 300));
+      }
       // create window
       this.createWindow();
       this.window.once('ready-to-show', () => {
